@@ -3,15 +3,24 @@ import java.util.*;
 public class Diver extends OceanObject {
     private int body_x = 30;
     private int body_y = 100;
-    private int eye_x_neg = 32;
-    private int eye_x_pos = 62;
-    private int eye_y = 103;
-    private int tail_y = 100;
-    private int tail_x_pos = 24;
-    private int tail_x_neg = 47;
-    private int fin_y = 20;
-    private int fin_x_pos = -10;
-    private int fin_x_neg = 20;
+    private int mask_x_neg = 32;
+    private int mask_x_pos = 32;
+    private int mask_y = 92;
+    private int head_y = 90;
+    private int head_x_pos = 30;
+    private int head_x_neg = 30;
+    private int leg1_y = 150;
+    private int leg1_x_pos = 35;
+    private int leg1_x_neg = 35;
+    private int leg2_y = 150;
+    private int leg2_x_pos = 20;
+    private int leg2_x_neg = 20;
+    private int arm1_y = 100;
+    private int arm1_x_pos = 42;
+    private int arm1_x_neg = 42;
+    private int arm2_y = 100;
+    private int arm2_x_pos = 22;
+    private int arm2_x_neg = 22;
     private Screen screen;
 
     public Diver (Screen screen_in, int x_in, int y_in, int hspeed_in, int vspeed_in, int hdirection_in, int vdirection_in){
@@ -47,33 +56,48 @@ public class Diver extends OceanObject {
         }
     }  
     private void newDiver() {
-        Oval body, eye;
-        Triangle tail, fin;
+        Oval body, head, mask;
+        Rectangle leg1, leg2, arm1, arm2;
         if (hdirection < 0) {
             creature.clear();
             // Fish is moving to the left
-            body = new Oval(screen, x+body_x, y+body_y, 50, 25, Color.red);
-            eye = new Oval(screen, x+eye_x_neg, y+eye_y, 5, 5, Color.black) ;
-            tail = new Triangle(screen, x+tail_x_neg, y+tail_y, 20, 10, Color.red);
-            fin = new Triangle (screen, x+fin_x_neg, y+fin_y, 10, 10, Color.GRAY);
-            tail.rotate(-90);
-            fin.rotate(-45);
+            body = new Oval(screen, x+body_x, y+body_y, 15, 45, Color.BLUE);
+            head = new Oval(screen, x+head_x_neg, y+head_y, 15, 15, Color.BLUE);
+            mask = new Oval(screen, x+mask_x_neg, y+mask_y, 10, 5, Color.WHITE) ;
+            leg1 = new Rectangle (screen, x+leg1_x_neg, y+leg1_y, 20, 6, Color.BLUE);
+            leg2 = new Rectangle (screen, x+leg2_x_neg, y+leg2_y, 20, 6, Color.BLUE);
+            arm1 = new Rectangle (screen, x+arm1_x_neg, y+arm1_y, 12, 6, Color.BLUE);
+            arm2 = new Rectangle (screen, x+arm2_x_neg, y+arm2_y, 12, 6, Color.BLUE);
+            leg1.rotate(60);
+            leg2.rotate(-60);
+            arm1.rotate(-30);
+            arm2.rotate(30);
+            mask.rotate(-180);
         }
         else {
             // Fish is moving to the right
-            body = new Oval(screen, x+body_x, y+body_y, 40, 20, Color.red);
-            eye = new Oval(screen, x+eye_x_pos, y+eye_y, 5, 5, Color.black) ;
-            tail = new Triangle(screen, x+tail_x_pos, y+tail_y, 20, 10, Color.red);
-            fin = new Triangle (screen, x+fin_x_pos, y+fin_y, 10, 10, Color.GRAY);
-            tail.rotate(-90);
-            fin.rotate(-45);
+            body = new Oval(screen, x+body_x, y+body_y, 15, 45, Color.BLUE);
+            head = new Oval(screen, x+head_x_pos, y+head_y, 15, 15, Color.BLUE);
+            mask = new Oval(screen, x+mask_x_pos, y+mask_y, 10, 5, Color.WHITE) ;
+            leg1 = new Rectangle (screen, x+leg1_x_pos, y+leg1_y, 20, 6, Color.BLUE);
+            leg2 = new Rectangle (screen, x+leg2_x_pos, y+leg2_y, 20, 6, Color.BLUE);
+            arm1 = new Rectangle (screen, x+arm1_x_pos, y+arm1_y, 12, 6, Color.BLUE);
+            arm2 = new Rectangle (screen, x+arm2_x_pos, y+arm1_y, 12, 6, Color.BLUE);
+            leg1.rotate(60);
+            leg2.rotate(-60);
+            arm1.rotate(-30);
+            arm2.rotate(30);
+            mask.rotate(-180);
         }
         //eye.center(body.center().x(), body.center().y() + 20);
         //tail.center(body.center().x(), body.center().y() );
-        creature.add(eye);
         creature.add(body);
-        creature.add(tail);
-        creature.add(fin);
+        creature.add(head);
+        creature.add(mask);
+        creature.add(leg1);
+        creature.add(leg2);
+        creature.add(arm1);
+        creature.add(arm2);
     }
     public void move_x(int hdirection_in){
         this.hdirection = hdirection_in;

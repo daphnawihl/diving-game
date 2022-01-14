@@ -36,7 +36,7 @@ public class Main extends Window {
         fishes.add(new Fish(screen, 500, 200, 4, 1, 1, -1));
         shark = new Shark(screen, 500, 300, 3, 1 , 1, -1);
         mouse = new Location (300., 300.);
-        diver = new Diver (screen, 300, 300, 5, 5, 1, -1);
+        diver = new Diver (screen, 300, 300, 3, 3, 1, -1);
 
         while (! eaten && fishes.size() > 0) {
             for(Fish f: fishes) {

@@ -6,12 +6,12 @@ public class Shark extends OceanObject {
     private int eye_x_neg = 32;
     private int eye_x_pos = 62;
     private int eye_y = 103;
-    private int tail_y = 100;
-    private int tail_x_pos = 24;
-    private int tail_x_neg = 47;
-    private int fin_y = 20;
-    private int fin_x_pos = -10;
-    private int fin_x_neg = 20;
+    private int tail_y = 105;
+    private int tail_x_pos = 20;
+    private int tail_x_neg = 70;
+    private int fin_y = 90;
+    private int fin_x_pos = 40;
+    private int fin_x_neg = 50;
     private Screen screen;
 
     public Shark(Screen screen_in, int x_in, int y_in, int hspeed_in, int vspeed_in, int hdirection_in, int vdirection_in){
@@ -51,22 +51,22 @@ public class Shark extends OceanObject {
         Triangle tail, fin;
         if (hdirection < 0) {
             creature.clear();
-            // Fish is moving to the left
+            // Shark is moving to the left
             body = new Oval(screen, x+body_x, y+body_y, 50, 25, Color.lightGray);
             eye = new Oval(screen, x+eye_x_neg, y+eye_y, 5, 5, Color.black) ;
             tail = new Triangle(screen, x+tail_x_neg, y+tail_y, 20, 10, Color.lightGray);
             fin = new Triangle (screen, x+fin_x_neg, y+fin_y, 10, 10, Color.GRAY);
             tail.rotate(-90);
-            fin.rotate(-45);
+            
         }
         else {
-            // Fish is moving to the right
+            // Shark is moving to the right
             body = new Oval(screen, x+body_x, y+body_y, 40, 20, Color.lightGray);
             eye = new Oval(screen, x+eye_x_pos, y+eye_y, 5, 5, Color.black) ;
             tail = new Triangle(screen, x+tail_x_pos, y+tail_y, 20, 10, Color.lightGray);
-            fin = new Triangle (screen, x+fin_x_pos, y+fin_y, 10, 10, Color.lightGray);
-            tail.rotate(-90);
-            fin.rotate(-45);
+            fin = new Triangle (screen, x+fin_x_pos, y+fin_y, 10, 10, Color.GRAY);
+            tail.rotate(90);
+            
         }
         //eye.center(body.center().x(), body.center().y() + 20);
         //tail.center(body.center().x(), body.center().y() );
